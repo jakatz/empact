@@ -5,7 +5,8 @@ if (Employees.find().count() === 0) {
     squad: "Vulcun",
     product: "Vulcun",
     join_date: "April 2015",
-    reviews: 5
+    reviews: 5,
+    active: true
   });
 
   Employees.insert({
@@ -14,7 +15,8 @@ if (Employees.find().count() === 0) {
     squad: "Vulcun",
     product: "Vulcun",
     join_date: "May 2015",
-    reviews: 10
+    reviews: 10,
+    active: true
   });
 
   Employees.insert({
@@ -23,6 +25,7 @@ if (Employees.find().count() === 0) {
     squad: "CEO",
     product: "All",
     join_date: "May 2014",
-    reviews: 100
+    reviews: 100,
+    active: true
   });
 }

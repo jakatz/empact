@@ -1,5 +1,20 @@
 <template name="employeesList">
-  {{#each employees}}
-    {{> employeeItem}}
-  {{/each}}
+  <table id="employees-table" class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Squad</th>
+        <th>Product</th>
+        <th>Join Date</th>
+        <th>Reviews</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#each employees}}
+        {{> employeeItem}}
+      {{/each}}
+    </tbody>
+  </table>
 </template>

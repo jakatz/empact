@@ -1,3 +1,3 @@
 Meteor.publish('employees', function() {
-  return Employees.find();
+  return Employees.find({active: true});
 });
