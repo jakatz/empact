@@ -16,4 +16,13 @@ if (Employees.find().count() === 0) {
     join_date: "May 2015",
     reviews: 10
   });
+
+  Employees.insert({
+    name: "Murtaza Hussain",
+    email: "murtaza@vulcun.com",
+    squad: "CEO",
+    product: "All",
+    join_date: "May 2014",
+    reviews: 100
+  });
 }
