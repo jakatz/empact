@@ -9,7 +9,20 @@
       </div>
     </header>
     <table id="main" class="table">
-      {{> employeesList}}
+      <thead>
+        <tr>
+          <th>Employee</th>
+          <th>Email</th>
+          <th>Squad</th>
+          <th>Product</th>
+          <th>Join Date</th>
+          <th>Reviews</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{> employeesList}}
+      </tbody>
     </table>
   </div>
 </body>
