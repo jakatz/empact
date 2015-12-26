@@ -1,0 +1,21 @@
+<template name="reviewsList">
+  <table id="reviews-table" class="table">
+    <thead>
+      <tr>
+        <th>Week</th>
+        <th>Your Average</th>
+        <th>Number of Reviews</th>
+        <th>Product Name</th>
+        <th>Product Average</th>
+        <th>Company Average</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#each reviews}}
+        {{> reviewItem}}
+      {{/each}}
+    </tbody>
+  </table>
+</template>

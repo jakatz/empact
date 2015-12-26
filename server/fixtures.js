@@ -29,3 +29,23 @@ if (Employees.find().count() === 0) {
     active: true
   });
 }
+
+if (Reviews.find().count() === 0) {
+  Reviews.insert({
+    week: 1,
+    user_average: 7,
+    review_count: 10,
+    product_name: "Vulcun",
+    product_average: 6,
+    company_average: 5
+  });
+
+  Reviews.insert({
+    week: 2,
+    user_average: 10,
+    review_count: 15,
+    product_name: "Vulcun",
+    product_average: 7,
+    company_average: 4
+  });
+}
