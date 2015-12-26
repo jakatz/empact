@@ -15,8 +15,8 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="menu">
         <ul class="nav navbar-nav">
-          <li class="{{#if isCurrentPage 'employeesList'}}active{{/if}}"><a href="{{pathFor 'employeesList'}}">Employees <span class="sr-only">(current)</span></a></li>
-          <li class="{{#if isCurrentPage 'reviewsList'}}active{{/if}}"><a href="{{pathFor 'reviewsList'}}">Reviews</a></li>
+          <li class="menu__link active"><a href="{{pathFor 'employeesList'}}">Employees <span class="sr-only">(current)</span></a></li>
+          <li class="menu__link"><a href="{{pathFor 'reviewsList'}}">Reviews</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           {{> loginButtons}}
