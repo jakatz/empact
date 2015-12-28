@@ -6,6 +6,7 @@ Template.reviewsSubmit.helpers({
 
 Template.reviewsSubmit.events({
   'submit form': function(e) {
+    console.log("form submitted");
     e.preventDefault();
 
     var review = {

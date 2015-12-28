@@ -7,9 +7,20 @@ Meteor.methods({
 
     Email.send({
       to: to,
-      from: 'jonathan.a.katz@gmail.com',
+      from: Meteor.user().emails[0].address,
       subject: subject,
       text: text
+    });
+  },
+
+  addReview: function(user_average, review_count, product_name, product_average, company_average) {
+    return Reviews.insert({
+      week: new Date(),
+      user_average: user_average,
+      review_count: review_count,
+      product_name: product_name,
+      product_average: product_average,
+      company_average: company_average
     });
   }
 });
