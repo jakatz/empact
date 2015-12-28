@@ -4,6 +4,6 @@ Template.email.events({
     Meteor.call('sendEmail',
                 'jonathan@vulcun.com',
                 'hello',
-                'goodbye');
+                '<h3>This is the title</h3></br><p>and this is the message</p>');
   }
 });

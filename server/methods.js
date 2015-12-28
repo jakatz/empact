@@ -1,5 +1,5 @@
 Meteor.methods({
-  sendEmail: function(to, subject, text) {
+  sendEmail: function(to, subject, html) {
     // Let other method calls from the same client start running,
     // without waiting for the email sending to complete.
     this.unblock();
@@ -9,12 +9,19 @@ Meteor.methods({
       throw new Meteor.Error(403, "not logged in");
     }
 
+    SSR.compileTemplate('htmlEmail', Assets.getText('html-email.html'));
+
+    var emailData = {
+      name: "Jon Katz",
+      favoriteRestaurant: "YUM",
+      bestFriend: "Yo mama"
+    };
 
     Email.send({
       to: to,
       from: Meteor.user().emails[0].address,
       subject: subject,
-      text: text
+      html: SSR.render('htmlEmail', emailData)
     });
   },
 
