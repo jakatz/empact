@@ -17,9 +17,11 @@ Meteor.methods({
       bestFriend: "Yo mama"
     };
 
+    var employees = 'employees';
+
     Email.send({
       to: to,
-      from: Meteor.user().emails[0].address,
+      from: 'ProjectImpact@vulcunimpact.meteor.com',
       subject: subject,
       html: SSR.render('htmlEmail', emailData)
     });
