@@ -4,6 +4,11 @@ Meteor.methods({
     // without waiting for the email sending to complete.
     this.unblock();
 
+    // Don't allow sending email unless logged in
+    if (!Meteor.user()) {
+      throw new Meteor.Error(403, "not logged in");
+    }
+
 
     Email.send({
       to: to,
