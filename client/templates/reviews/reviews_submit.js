@@ -6,15 +6,31 @@ Template.reviewsSubmit.helpers({
 
 Template.reviewsSubmit.events({
   'submit form': function(e) {
-    console.log("form submitted");
     e.preventDefault();
-    console.log('form submitted');
 
-    var review = {
-      submitted_by: Meteor.user()
-    };
+    var comments = e.target.reviewFeedback;
+    var reviews = [];
 
-    review._id = Reviews.insert(review);
+    for (var i = 0; i < comments.length; i++) {
+      console.log(comments[i].value);
+
+      reviews.push({
+        week: 1,
+        user_average: 1,
+        review_count: 1,
+        product_name: "Vulcun",
+        product_average: 1,
+        company_average: 1
+      });
+
+      console.log(reviews);
+    }
+
+    // var review = {
+    //   submitted_by: Meteor.user()
+    // };
+
+    // review._id = Reviews.insert(review);
     Router.go('submittedPage');
   }
 });

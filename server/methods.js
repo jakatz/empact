@@ -1,5 +1,5 @@
 Meteor.methods({
-  sendEmail: function(to, subject, html) {
+  'sendEmail': function(to, subject, html) {
     // Let other method calls from the same client start running,
     // without waiting for the email sending to complete.
     this.unblock();
@@ -27,14 +27,27 @@ Meteor.methods({
     });
   },
 
-  addReview: function(user_average, review_count, product_name, product_average, company_average) {
-    return Reviews.insert({
-      week: new Date(),
-      user_average: user_average,
-      review_count: review_count,
-      product_name: product_name,
-      product_average: product_average,
-      company_average: company_average
+  'validateEmailAddress': function(address) {
+    check(address, String);
+  },
+
+  'addEmployee': function(name, email, joinDate, product) {
+    Employees.insert({
+      name: name,
+      email: email,
+      join_date: joinDate,
+      product: product,
+      created_on: new Date(),
+      rating: 0
+    });
+  },
+
+  'addReview': function(week, submittedBy, product) {
+    Reviews.insert({
+      week: week,
+      submitted_by: submittedBy,
+      product: product,
+      answers: []
     });
   }
 });
