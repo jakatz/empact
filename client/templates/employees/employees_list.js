@@ -10,6 +10,8 @@ Template.employeesList.events({
   },
 
   'click #add-review': function() {
-    Meteor.call('addReview', 1, "DJ", "Vulcun");
+    var current_employee = Meteor.userId();
+
+    Meteor.call('addReview', 1, "DJ", "Vulcun", current_employee, 10);
   }
 });
