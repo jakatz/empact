@@ -51,5 +51,12 @@ Meteor.methods({
       rating: rating,
       comment: ""
     });
+  },
+
+  'getAverage': function(employee_id) {
+    var employee_reviews = [Reviews.find({sucker: current_employee}).fetch()];
+    var total = 0;
+
+    return employee_reviews;
   }
 });
