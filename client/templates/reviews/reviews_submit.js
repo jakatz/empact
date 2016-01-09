@@ -21,11 +21,14 @@ Template.reviewsSubmit.events({
     var currentUser = Meteor.userId();
     var review_html = $(e.target).find('.suckerName');
     var reviews = [];
+    var week = new moment().diff(moment("12-24-2015", "MM-DD-YYYY"), 'weeks');
+
+    console.log(week);
 
     for (var i = 0; i < review_html.length; i++) {
       reviews.push({
-        week: 1,
         submitted_by: currentUser,
+        week: Meteor.call('getWeek'),
         sucker: e.target['suckerID-' + i].value,
         rating: e.target['suckerRating-' + i].value,
         product: e.target.product.value,
