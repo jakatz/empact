@@ -11,3 +11,14 @@ Template.header.events({
 
     }
 });
+
+
+Template.header.helpers({
+  isUserAdmin: function () {
+    if (Meteor.user().roles[0] === 'admin') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+});
