@@ -42,14 +42,9 @@ Meteor.methods({
     });
   },
 
-  'addReview': function(week, submittedBy, product, suckerId, rating) {
-    Reviews.insert({
-      week: week,
-      submitted_by: submittedBy,
-      product: product,
-      sucker: suckerId,
-      rating: rating,
-      comment: ""
+  'addReviews': function(reviews) {
+    reviews.forEach(function(review) {
+      Reviews.insert(review);
     });
   },
 

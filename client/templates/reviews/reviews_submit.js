@@ -1,36 +1,39 @@
 Template.reviewsSubmit.helpers({
   employees: function() {
-    return Employees.find();
-  }
+    var employees = []
+    var index = 0;
+
+    Employees.find().forEach(function(emp, i) {
+      console.log(emp, i);
+      emp.index = i;
+      employees.push(emp)
+    });
+
+    return employees;
+  },
+
 });
 
 Template.reviewsSubmit.events({
   'submit form': function(e) {
     e.preventDefault();
 
-    var comments = e.target.reviewFeedback;
+    var currentUser = Meteor.userId();
+    var review_html = $(e.target).find('.suckerName');
     var reviews = [];
 
-    for (var i = 0; i < comments.length; i++) {
-      console.log(comments[i].value);
-
+    for (var i = 0; i < review_html.length; i++) {
       reviews.push({
         week: 1,
-        user_average: 1,
-        review_count: 1,
-        product_name: "Vulcun",
-        product_average: 1,
-        company_average: 1
+        submitted_by: currentUser,
+        sucker: e.target['suckerID-' + i].value,
+        rating: e.target['suckerRating-' + i].value,
+        product: e.target.product.value,
       });
 
       console.log(reviews);
     }
 
-    // var review = {
-    //   submitted_by: Meteor.user()
-    // };
-
-    // review._id = Reviews.insert(review);
-    Router.go('submittedPage');
+    Meteor.call('addReviews', reviews);
   }
 });
