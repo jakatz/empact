@@ -53,5 +53,9 @@ Meteor.methods({
     var total = 0;
 
     return employee_reviews;
+  },
+
+  'setAdmin': function() {
+    Meteor.users.update({ _id: Meteor.userId() }, { $set: {'roles': ['admin']}});
   }
 });
