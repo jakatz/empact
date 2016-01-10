@@ -26,7 +26,6 @@ meteorhacks:kadira
 meteorhacks:zones
 http
 meteorhacks:ssr
-accounts-google
 service-configuration
 peppelg:bootstrap-3-modal
 momentjs:moment
