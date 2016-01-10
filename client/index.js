@@ -14,4 +14,10 @@ Template.index.events({
     console.log('click');
     Modal.show('signInWithEmailModal');
   }
-})
+});
+
+Template.index.helpers({
+  isVerifiedUser: function() {
+    return Meteor.user().emails[0].verified;
+  }
+});

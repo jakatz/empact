@@ -5,10 +5,16 @@
         <h1>Welcome to Project Impact</h1>
       </div>
       <div>
-        {{#if currentUser}}<div>Current Squad: <input type="text"></div>
-        <button class="btn btn-submit">Save</button>
-        {{else}}
-        <p>Please log in using your Vulcun Email account.</p>
+        {{#if currentUser}}
+          {{#if isVerifiedUser}}
+          <div>Current Squad: <input type="text"></div>
+          <button class="btn btn-submit">Save</button>
+          {{else}}
+          <div class="alert alert-warning">Please confirm your email address.  An email should arrive shortly.</div>
+          {{/if}}
+
+          {{else}}
+          <p>Please login with your @vulcun email address.</p>
         {{/if}}
       </div>
     </div>
