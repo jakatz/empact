@@ -1,5 +1,5 @@
 Meteor.publish('employees', function() {
-  return Employees.find({active: true});
+  return Meteor.users.find();
 });
 
 Meteor.publish('reviews', function() {
