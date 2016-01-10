@@ -15,9 +15,4 @@ Meteor.startup(function() {
   Accounts.emailTemplates.verifyEmail.text = function(user, url) {
     return 'Thank you for registering.  Please click on the following link to verify your email address: \r\n' + url;
   };
-
-  // Send email
-  Accounts.config({
-    sendVerificationEmail: true
-  });
 });

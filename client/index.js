@@ -16,7 +16,11 @@ Template.index.events({
         squad = e.target.squad.value,
         email = Meteor.user().emails[0].address;
 
+    // Create a new Employee
     Meteor.call('addEmployee', firstName, lastName, email, joinDate, squad);
+
+    // Mark user as having created an employee profile
+    Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.created_profile": true}});
   }
 });
 
