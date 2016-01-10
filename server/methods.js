@@ -31,14 +31,14 @@ Meteor.methods({
     check(address, String);
   },
 
-  'addEmployee': function(name, email, joinDate, product) {
+  'addEmployee': function(firstName, lastName, email, joinDate, squad) {
     Employees.insert({
-      name: name,
+      first_name: firstName,
+      last_name: lastName,
       email: email,
       join_date: joinDate,
-      product: product,
-      created_on: new Date(),
-      rating: 0
+      squad: squad,
+      created_on: new Date()
     });
   },
 

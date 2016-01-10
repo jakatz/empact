@@ -1,18 +1,22 @@
-Template.index.events({
-  'click .btn-google': function(e) {
-    Meteor.loginWithGoogle({
-      requestPermissions: ['email']
-    }, function(err) {
-      if (err) {
-        console.log(err.reason);
-      }
-    });
-  },
+Template.index.rendered = function() {
+  $("#datepicker").datepicker({
+    format: "mm-yyyy",
+    viewMode: "months",
+    minViewMode: "months"
+  });
+};
 
-  'click .open-modal': function(e) {
+Template.index.events({
+  'submit form': function(e) {
     e.preventDefault();
-    console.log('click');
-    Modal.show('signInWithEmailModal');
+
+    var firstName = e.target.firstName.value,
+        lastName = e.target.lastName.value,
+        joinDate = e.target.joinDate.value,
+        squad = e.target.squad.value,
+        email = Meteor.user().emails[0].address;
+
+    Meteor.call('addEmployee', firstName, lastName, email, joinDate, squad);
   }
 });
 

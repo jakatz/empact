@@ -1,5 +1,5 @@
 Meteor.publish('employees', function() {
-  return Meteor.users.find();
+  return Employees.find();
 });
 
 Meteor.publish('reviews', function() {
