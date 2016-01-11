@@ -1,0 +1,32 @@
+<template name="profile">
+  <h3>Please fill out your employee info</h3>
+  <form class="employee-info">
+    <div class="form-group">
+      <label for="employee-firstName">First Name</label>
+      <input type="text" class="form-control" id="employee-firstName" name="firstName" placeholder="First name">
+    </div>
+
+    <div class="form-group">
+      <label for="employee-firstName">Last Name</label>
+      <input type="text" class="form-control" id="employee-lastName" name="lastName" placeholder="Last name">
+    </div>
+
+    <div class="form-group">
+      <label for="joinDate">When did you join Vulcun?</label>
+      <input type="text" class="form-control" id="datepicker" name="joinDate">
+    </div>
+
+    <div class="form-group">
+      <label for="employee-squad">What squad are you on?</label>
+      <select class="form-control" id="employee-squad" name="squad">
+        <option value="Vulcun">Vulcun</option>
+        <option value="Jackpot">CSGO Jackpot</option>
+        <option value="StreamFighter">Stream Fighter</option>
+        <option value="TwitchAlerts">Twitch Alerts</option>
+        <option value="Mugen">Mugen</option>
+      </select>
+    </div>
+
+    <button class="btn btn-default" type="submit">Submit</button>
+  </form>
+</template>

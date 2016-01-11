@@ -38,7 +38,8 @@ Meteor.methods({
       email: email,
       join_date: joinDate,
       squad: squad,
-      created_on: new Date()
+      created_on: new Date(),
+      user_id: Meteor.userId()
     });
   },
 

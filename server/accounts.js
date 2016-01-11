@@ -5,7 +5,15 @@
   // sendVerificationEmail: true
 // });
 
-// Temp Set Verified to True
+// Temp Set Verified to True -- DELETE THIS AFTER FINISHED!
+Accounts.onCreateUser(function(options, user) {
+  if (options.profile) {
+    user.profile = options.profile;
+  }
+
+  user.emails[0].verified = true;
+  return user;
+});
 
 
 // Set Admin
