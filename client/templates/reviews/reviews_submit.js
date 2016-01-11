@@ -28,10 +28,11 @@ Template.reviewsSubmit.events({
     for (var i = 0; i < review_html.length; i++) {
       reviews.push({
         submitted_by: currentUser,
-        week: Meteor.call('getWeek'),
+        week: week,
         sucker: e.target['suckerID-' + i].value,
         rating: e.target['suckerRating-' + i].value,
         product: e.target.product.value,
+        feedback: e.target['reviewFeedback-' + i].value
       });
 
       console.log(reviews);
