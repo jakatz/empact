@@ -21,7 +21,7 @@ Template.reviewsSubmit.events({
     var currentUser = Meteor.userId();
     var review_html = $(e.target).find('.suckerName');
     var reviews = [];
-    var week = new moment().diff(moment("12-24-2015", "MM-DD-YYYY"), 'weeks');
+    var week = Meteor.call('getWeek');
 
     console.log(week);
 

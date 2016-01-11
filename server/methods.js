@@ -58,5 +58,19 @@ Meteor.methods({
 
   'setAdmin': function() {
     Meteor.users.update({ _id: Meteor.userId() }, { $set: {'roles': ['admin']}});
+  },
+
+  'getWeek': function() {
+    return new moment().diff(moment("12-24-2015", "MM-DD-YYYY"), 'weeks');
+  },
+
+  'compileReviews': function(userId) {
+    var currentWeek = Meteor.call('getWeek'),
+        weekly_ratings = Reviews.find({"sucker": userId, "week": currentWeek}).fetch();
+
+    return weekly_ratings;
+  },
+
+  'getMetrics': function() {
   }
 });
