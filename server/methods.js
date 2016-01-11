@@ -49,11 +49,16 @@ Meteor.methods({
     });
   },
 
-  'getAverage': function(employee_id) {
-    var employee_reviews = [Reviews.find({sucker: current_employee}).fetch()];
-    var total = 0;
+  'getAverage': function(weekly_ratings) {
+    var sum = _.reduce(weekly_ratings, function(total, n) {
+      if (n.rating) {
+        return total + parseInt(n.rating);
+      } else { return total }
+    }, 0);
 
-    return employee_reviews;
+    if (sum !== 0) {
+      return sum/weekly_ratings.length;
+    } else { return 0; }
   },
 
   'setAdmin': function() {
@@ -61,16 +66,51 @@ Meteor.methods({
   },
 
   'getWeek': function() {
-    return new moment().diff(moment("12-24-2015", "MM-DD-YYYY"), 'weeks');
+    return Weeks.findOne().currentWeek;
   },
 
-  'compileReviews': function(userId) {
-    var currentWeek = Meteor.call('getWeek'),
-        weekly_ratings = Reviews.find({"sucker": userId, "week": currentWeek}).fetch();
+  'updateWeek': function() {
+    var lastWeek = Weeks.findOne();
+    Weeks.update(lastWeek, {$inc: {currentWeek: 1}});
+
+    return lastWeek.currentWeek + 1;
+  },
+
+  'compileReviews': function(searchObject) {
+    var week = Meteor.call('getWeek');
+    weekly_ratings = [];
+
+    for (var i = 1; i <= week; i++) {
+      searchObject.week = i;
+      var temp = Reviews.find(searchObject).fetch();
+      weekly_ratings.push(Meteor.call('getAverage', temp));
+      console.log(searchObject);
+      console.log("----------------");
+      console.log(temp);
+    }
+
 
     return weekly_ratings;
   },
 
-  'getMetrics': function() {
+  'getMetric': function(userId) {
+    var employee = Employees.findOne({user_id: userId});
+    var userAverages = Meteor.call('compileReviews', { sucker: employee._id });
+    var companyAverages = Meteor.call('compileReviews', {});
+    var squadAverages = Meteor.call('compileReviews', { squad: employee.squad });
+
+    // product_ratings = Meteor.call('compileReviews', { product: })
+    var averages = _.map(companyAverages, function(val, i) {
+      var a = {};
+      a.week = i + 1;
+      a.userAverage = userAverages[i];
+      a.companyAverage = companyAverages[i];
+      a.squadAverages = squadAverages[i];
+      a.reviewCount = Reviews.find({"sucker": employee._id, "week": a.week}).fetch().length;
+
+      return a;
+    });
+
+    return averages;
   }
 });

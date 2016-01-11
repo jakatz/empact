@@ -1,6 +1,6 @@
 Template.reviewsList.helpers({
-  reviews: function() {
-    return Reviews.find();
+  averages: function() {
+
   }
 });
 

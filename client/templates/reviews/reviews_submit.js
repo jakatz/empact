@@ -21,7 +21,7 @@ Template.reviewsSubmit.events({
     var currentUser = Meteor.userId();
     var review_html = $(e.target).find('.suckerName');
     var reviews = [];
-    var week = Meteor.call('getWeek');
+    var week = 3;
 
     console.log(week);
 
@@ -32,6 +32,7 @@ Template.reviewsSubmit.events({
         sucker: e.target['suckerID-' + i].value,
         rating: e.target['suckerRating-' + i].value,
         product: e.target.product.value,
+        squad: Employees.findOne({user_id: currentUser}).squad,
         feedback: e.target['reviewFeedback-' + i].value
       });
 
